@@ -46,13 +46,13 @@
                                 <p class="text-gray-800">Ciudad: {{ $equipo->ciudad }}</p>
                                 <p class="text-gray-800">Número de Jugadores: {{ $equipo->jugadores }}</p>
                                 <p class="text-gray-800">División: {{ $equipo->division }}</p>
+                                
                                 <div class="mt-4">
-
                                     <a href="/equipo/{{$equipo->id}}" class="btn btn-warning">
                                         <i class="material-icons">visibility</i>
                                     </a>
                                                                         
-                                    <a href="/equipo/{{$equipo->id}}" class="btn btn-primary">
+                                    <a href="/equipo/{{$equipo->id}}/edit" class="btn btn-primary">
                                         <i class="material-icons">edit</i>
                                     </a>                                    
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete{{$equipo->id}}">

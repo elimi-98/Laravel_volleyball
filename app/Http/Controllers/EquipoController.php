@@ -45,11 +45,8 @@ class EquipoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $equipo = Equipo::find($id); 
+    public function show(Equipo $equipo){
         return view('equipo.show', compact('equipo'));
-        //return view('equipos.show', ['equipo' => $equipo]);//
 
     }
 
@@ -59,6 +56,7 @@ class EquipoController extends Controller
     public function edit(string $id)
     {
         $equipo = Equipo::find($id); 
+        echo
         return view('equipo.edit')->with('equipo', $equipo); 
     }
 
