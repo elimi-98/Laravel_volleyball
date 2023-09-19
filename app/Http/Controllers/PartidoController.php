@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Partido;
 
 class PartidoController extends Controller
 {
@@ -10,8 +11,9 @@ class PartidoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        $partidos = Partido::all(); 
+        return view('partido.index') ->with('partidos', $partidos);
     }
 
     /**

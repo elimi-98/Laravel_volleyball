@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('equipo1', 10);
             $table->string('equipo2', 10);
+            $table->string('ciudad', 10);
             $table->time('fecha');
             $table->timestamps();
         });
