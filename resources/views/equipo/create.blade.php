@@ -1,4 +1,5 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
+<!-- boostrap -->
 
 @section('contenido')
 <h2> REGISTRAR EQUIPO </h2>  
@@ -24,6 +25,5 @@
   <a href="/equipo" class="btn btn-secondary" tabindex="5">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 </form>
-
 
 @endsection
