@@ -1,6 +1,8 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
+<!-- boostrap -->
 
 @section('contenido')
+
 <h2> EDITAR EQUIPO </h2>  
 
 <form action="/equipo/{{$equipo->id}}" method="POST">

@@ -1,20 +1,9 @@
 @extends('layouts.plantillabase')
-
+<!-- boostrap y TW -->
 @section('contenido')
     <div class="container mt-5 text-center">
         <a href="equipo/create" class="btn btn-outline-primary">CREAR EQUIPO</a>
     </div>
-
-    <!-- Código de Tailwind CSS -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Equipos</title>
-        <!-- Enlace a los estilos de Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <style>
             /* Estilo personalizado */
