@@ -16,11 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('equipo_local');
             $table->unsignedBigInteger('equipo_visitante');
             $table->string('ciudad', 10);
-            $table->time('fecha');
+            $table->timestamp('fecha');
             $table->timestamps();
         
-            $table->foreign('equipo_local')->references('id')->on('equipo')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('equipo_visitante')->references('id')->on('equipo')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('equipo_local')->references('id')->on('equipos');//->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('equipo_visitante')->references('id')->on('equipos');//->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

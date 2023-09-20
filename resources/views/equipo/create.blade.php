@@ -22,6 +22,7 @@
     <label for="" class="form-label">Division</label>
     <input id="division" name="division" type="number" class="form-control" tabindex="3">
   </div>
+  <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
   <a href="/equipo" class="btn btn-secondary" tabindex="5">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 </form>

@@ -20,7 +20,8 @@ class EquipoController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
+        
         return view('equipo.create'); 
     }
 
@@ -35,7 +36,7 @@ class EquipoController extends Controller
         $equipos->ciudad = $request->get('ciudad');
         $equipos->jugadores = $request->get('jugadores');
         $equipos->division = $request->get('division');
-
+        $equipos->user_id = $request->input('user_id');
         $equipos->save(); 
 
         return redirect('/equipo');
