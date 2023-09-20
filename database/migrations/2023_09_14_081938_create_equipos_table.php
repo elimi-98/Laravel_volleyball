@@ -18,6 +18,10 @@ return new class extends Migration
             $table->integer('jugadores');
             $table->integer('division'); 
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
