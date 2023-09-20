@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Partido;
+use App\Models\Equipo;
 
 class PartidoController extends Controller
 {
@@ -21,7 +22,8 @@ class PartidoController extends Controller
      */
     public function create()
     {
-        return view('partido.create'); 
+        $equipos = Equipo::all(); 
+        return view('partido.create', compact('equipos'));
     }
 
     /**

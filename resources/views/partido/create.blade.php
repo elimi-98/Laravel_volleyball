@@ -3,24 +3,34 @@
 @section('contenido')
 <h2> REGISTRAR PARTIDO </h2>  
 
-<form action="/partidos" method="POST">
+<form action="/partido" method="POST">
     @csrf
   <div class="mb-3">
-    <label for="nombre" class="form-label">Equipo local</label>
-        <select name="nombre" id="nombre" class="form-control">
-            <option value="" disabled selected>Selecciona un equipo</option>"
+    <label for="equipo_local" class="form-label">Equipo local</label>
+        <select name="equipo_local" class="form-control">
+            <option value="" disabled selected>Selecciona un equipo...</option>"
             @foreach($equipos as $equipo)
                 <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
             @endforeach
         </select>
   </div>
   <div class="mb-3">
-    <label for="" class="form-label">Equipo visitante</label>
-    <input id="equipo_visitante" name="equipo_visitante" type="text" class="form-control" tabindex="2">
+    <label for="equipo_visitante" class="form-label">Equipo visitante</label>
+        <select name="equipo_visitante" class="form-control">
+          <option value="" disabled selected>Selecciona un equipo...</option>"
+          @foreach($equipos as $equipo)
+              <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
+          @endforeach
+      </select>
   </div>
   <div class="mb-3">
-    <label for="" class="form-label">Ciudad</label>
-    <input id="ciudad" name="ciudad" type="text" class="form-control" tabindex="3">
+    <label for="ciudad" class="form-label">Ciudad</label>
+        <select name="ciudad" class="form-control">
+          <option value="" disabled selected>Selecciona una ciudad...</option>"
+          @foreach($equipos as $equipo)
+              <option value="{{$equipo->id}}">{{$equipo->ciudad}}</option>
+          @endforeach
+      </select>
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Fecha</label>
