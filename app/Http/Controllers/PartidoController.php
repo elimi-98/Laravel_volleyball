@@ -21,7 +21,7 @@ class PartidoController extends Controller
      */
     public function create()
     {
-        //
+        return view('partido.create'); 
     }
 
     /**
@@ -29,7 +29,16 @@ class PartidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $partidos = new Partido();
+       
+        $partidos->equipo_local = $request ->get('equipo_local');
+        $partidos->equipo_visitante = $request ->get('equipo_visitante');
+        $partidos->ciudad = $request ->get('ciudad');
+        $partidos->fecha = $request ->get('fecha');
+
+        $partidos-> save();
+        
+        return redirect('/partido'); 
     }
 
     /**
