@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('partidos', function (Blueprint $table) {
             $table->id();
-            $table->string('equipo1', 10);
-            $table->string('equipo2', 10);
+            $table->string('equipo_local', 10);
+            $table->string('equipo_visitante', 10);
             $table->string('ciudad', 10);
             $table->time('fecha');
             $table->timestamps();
