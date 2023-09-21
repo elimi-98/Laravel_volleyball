@@ -11,11 +11,11 @@ class Partido extends Model
     use HasFactory;
     protected $guarded = [];
     // Relación inversa con Equipo
-    public function local(){
+    public function equipo_local(){
         return $this->belongsTo(Equipo::class, 'equipo_local');
     }
     //Relación inversa con Partido
-    public function visitante() {
+    public function equipo_visitante() {
         return $this->belongsTo(Equipo::class,'equipo_visitante');
     }
 }

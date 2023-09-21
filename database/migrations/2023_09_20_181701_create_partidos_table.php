@@ -19,8 +19,8 @@ return new class extends Migration
             $table->timestamp('fecha');
             $table->timestamps();
         
-            $table->foreign('equipo_local')->references('id')->on('equipos');//->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('equipo_visitante')->references('id')->on('equipos');//->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('equipo_local')->references('id')->on('equipos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('equipo_visitante')->references('id')->on('equipos')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

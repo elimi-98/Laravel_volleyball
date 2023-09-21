@@ -35,7 +35,11 @@
         <div class="row">
             @foreach ($equipos as $equipo)
             <div class="col-12 col-sm-6 col-md-4 mb-4">
-                <a href="{{ route('partido.index') }}">
+               <button
+                <a href="/equipo/{{$equipo}}/partidos" class="btn btn-primary">
+                    Ver Partidos
+                </a>
+               </button>
                     <div class="card equipo-card">
                         <div class="card-body text-center">
                             <h5 class="text-gray-800 card-title equipo-title font-weight-bold text-uppercase">{{ $equipo->nombre }}</h5>
