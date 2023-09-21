@@ -56,7 +56,10 @@ class PartidoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $partido = Partido::find($id);
+        $equipos = Equipo::all(); 
+       /* return view('partido.edit')->with('partido', $partido);*/
+        return view('partido.edit', compact('partido', 'equipos')); 
     }
 
     /**
@@ -64,7 +67,16 @@ class PartidoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $partido = Partido::find($id);
+       
+        $partido->equipo_local = $request ->get('equipo_local');
+        $partido->equipo_visitante = $request ->get('equipo_visitante');
+        $partido->ciudad = $request ->get('ciudad');
+        $partido->fecha = $request ->get('fecha');
+
+         $partido-> save(); 
+        
+        return redirect('/partido'); 
     }
 
     /**

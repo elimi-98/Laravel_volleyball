@@ -22,7 +22,7 @@
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Division</label>
-    <input id="division" name="division" type="number" class="form-control" value="{{$equipo->division}}" tabindex="3">
+    <input id="division" name="division" type="number" class="form-control" value="{{$equipo->division}}" tabindex="4">
   </div>
   <a href="/equipo" class="btn btn-secondary" tabindex="5">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
