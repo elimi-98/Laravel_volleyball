@@ -38,7 +38,7 @@ class PartidoController extends Controller
         $partidos->ciudad = $request ->get('ciudad');
         $partidos->fecha = $request ->get('fecha');
 
-        $partidos-> save();
+         $partidos-> save(); 
         
         return redirect('/partido'); 
     }

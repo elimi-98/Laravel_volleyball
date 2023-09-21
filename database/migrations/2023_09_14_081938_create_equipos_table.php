@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('jugadores');
             $table->integer('division'); 
             $table->timestamps();
-            $table->unsignedBigInteger('user_id')->default(0);
+            $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users');//->onDelete('cascade')->onUpdate('cascade');
 

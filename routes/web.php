@@ -18,9 +18,11 @@ use App\Http\Controllers\LigaController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware('auth')->group(function(){
+    Route::resource('equipo','App\Http\Controllers\EquipoController');
+    Route::resource('partido','App\Http\Controllers\PartidoController');
+});
 
-Route::resource('equipo','App\Http\Controllers\EquipoController');
-Route::resource('partido','App\Http\Controllers\PartidoController');
 
 
 Route::middleware([

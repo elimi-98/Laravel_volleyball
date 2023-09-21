@@ -3,7 +3,7 @@
 @section('contenido')
 <h2> REGISTRAR PARTIDO </h2>  
 
-<form action="/partido" method="POST">
+<form action="{{route('partido.store')}}" method="POST">
     @csrf
   <div class="mb-3">
     <label for="equipo_local" class="form-label">Equipo local</label>
@@ -34,7 +34,7 @@
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Fecha</label>
-    <input id="fecha" name="fecha" type="date" class="form-control" tabindex="3">
+    <input id="fecha" name="timestamp" type="date" class="form-control" tabindex="3">
   </div>
   <a href="/partido" class="btn btn-secondary" tabindex="5">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>

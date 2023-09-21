@@ -24,9 +24,9 @@
         <tbody>
             @foreach ($partidos as $partido)
                 <tr>
-                    <td class="text-center">{{$partido->equipo_local}}</td>
-                    <td class="text-center">{{$partido->equipo_visitante}}</td>
-                    <td class="text-center">{{$partido->ciudad}}</td>
+                    <td class="text-center">{{$partido->local->nombre}}</td>
+                    <td class="text-center">{{$partido->visitante->nombre}}</td>
+                    <td class="text-center">{{$partido->local->ciudad}}</td>
                     <td class="text-center">{{$partido->fecha}}</td>
                     <td class="text-center"><a href="/partido/{{$partido->id}}" class="btn btn-warning">
                         <i class="material-icons">visibility</i>
@@ -34,7 +34,7 @@
                     <td class="text-center"><a href="/partido/{{$partido->id}}/edit" class="btn btn-primary">
                         <i class="material-icons">edit</i>
                     </a></td>
-                    <td class="text-center"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete{{$equipo->id}}">
+                    <td class="text-center"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete{{$partido->id}}">
                         <i class="material-icons">delete</i>
                     </button></td>
                 </tr> 
@@ -42,7 +42,7 @@
                 
                 <!-- Modal de confirmación de borrado -->
                 
-                <div class="modal fade" id="confirmDelete{{$equipo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="confirmDelete{{$partido->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <form action="{{route('equipo.destroy', $equipo->id)}}" method="POST">
+                                <form action="{{route('equipo.destroy', $partido->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Confirmar</button>

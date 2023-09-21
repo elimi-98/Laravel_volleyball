@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equipo; 
+use Illuminate\Support\Facades\Auth;
 
 class EquipoController extends Controller
 {
@@ -30,18 +31,33 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
-        $equipos = new Equipo();
+      
+    // Verificar si el usuario está autenticado.
+        if (Auth::check()) {
+            // Obtener el usuario autenticado actualmente.
+            $user = Auth::user(); // Utilizar Auth::user() para obtener el usuario autenticado.
 
-        $equipos->nombre = $request->get('nombre');
-        $equipos->ciudad = $request->get('ciudad');
-        $equipos->jugadores = $request->get('jugadores');
-        $equipos->division = $request->get('division');
-        $equipos->user_id = $request->input('user_id');
-        $equipos->save(); 
+            // Crear un nuevo equipo y asignar valores.
+            $equipo = new Equipo();
+            $equipo->nombre = $request->input('nombre');
+            $equipo->ciudad = $request->input('ciudad');
+            $equipo->jugadores = $request->input('jugadores');
+            $equipo->division = $request->input('division');
 
-        return redirect('/equipo');
+            // Asignar el ID del usuario al campo user_id.
+            $equipo->user_id = $user->id;
 
+            // Guardar el equipo.
+            $equipo->save();
+
+            // Redireccionar o mostrar un mensaje de éxito.
+            return redirect('/equipo')->with('success', 'Equipo creado exitosamente');
+        } else {
+            // Manejar el caso en el que el usuario no esté autenticado.
+            return redirect('/login')->with('error', 'Debes iniciar sesión para crear un equipo');
+        }
     }
+
 
     /**
      * Display the specified resource.
