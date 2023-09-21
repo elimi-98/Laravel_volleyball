@@ -72,6 +72,8 @@ class PartidoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $partido = Partido::find($id);
+        $partido->delete();
+        return redirect('/partido');
     }
 }
