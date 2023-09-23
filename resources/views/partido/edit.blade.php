@@ -24,19 +24,16 @@
             @endforeach
         </select>
     </div>
-    <div class="mb-3">
-        <label for="ciudad" class="form-label">Ciudad</label>
-        <select name="ciudad" class="form-control" tabindex="3">
-            <option value="" disabled selected>Selecciona una ciudad...</option>
-            @foreach($equipos as $equipo)
-                <option value="{{$equipo->ciudad}}" {{$partido->local->ciudad == $equipo->ciudad ? 'selected' : ''}}>{{$equipo->ciudad}}</option>
-            @endforeach
-        </select>
-    </div>
+   
     <div class="mb-3">
         <label for="fecha" class="form-label">Fecha</label>
         <input id="fecha" name="fecha" type="date" class="form-control" value="{{$partido->fecha}}" tabindex="4">
     </div>
+    <div class="mb-3">
+        <label for="hora" class="form-label">Hora</label>
+        <input id="hora" name="hora" type="time" class="form-control" value="{{$partido->hora}}" tabindex="5">
+    </div>
+    
     <a href="/partido" class="btn btn-secondary" tabindex="6">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
 </form>

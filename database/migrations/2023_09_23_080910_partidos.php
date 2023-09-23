@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('equipo_local');
             $table->unsignedBigInteger('equipo_visitante');
-            $table->string('ciudad', 10);
-            $table->timestamp('fecha');
+            $table->string('ciudad', 20);
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
         
             $table->foreign('equipo_local')->references('id')->on('equipos')->onDelete('cascade')->onUpdate('cascade');

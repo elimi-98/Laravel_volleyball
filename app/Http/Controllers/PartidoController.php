@@ -30,25 +30,46 @@ class PartidoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $partidos = new Partido();
-       
-        $partidos->equipo_local = $request ->get('equipo_local');
-        $partidos->equipo_visitante = $request ->get('equipo_visitante');
-        $partidos->ciudad = $request ->get('ciudad');
-        $partidos->fecha = $request ->get('fecha');
+{
+        // Validación de los datos del formulario aquí...
 
-         $partidos-> save(); 
+        // Crear una nueva instancia de Partido
+        $partido = new Partido();
+    
+        // Obtener el ID del equipo local desde la solicitud
+        $equipoLocalId = $request->input('equipo_local');
         
+        // Usar la relación para obtener el equipo local y su ciudad
+        $equipoLocal = Equipo::find($equipoLocalId);
+        $ciudad = $equipoLocal->ciudad;
+        
+        // Asignar los valores al partido
+        $partido->equipo_local = $equipoLocalId;
+        $partido->equipo_visitante = $request->input('equipo_visitante');
+        $partido->ciudad = $ciudad; // Asignar la ciudad obtenida
+        $partido->fecha = $request->input('fecha');
+        $partido->hora = $request->input('hora');
+
+        
+        // Otras asignaciones de campos si es necesario...
+        
+        // Guardar el partido
+        $partido->save();
+
+        // Redireccionar a la página de partidos
         return redirect('/partido'); 
-    }
+}
+
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        
+        $partido = Partido::find($id); 
+        return view('partido.show', compact('partido'));
+
     }
 
     /**
@@ -71,8 +92,13 @@ class PartidoController extends Controller
        
         $partido->equipo_local = $request ->get('equipo_local');
         $partido->equipo_visitante = $request ->get('equipo_visitante');
-        $partido->ciudad = $request ->get('ciudad');
+
+        $equipo_local = Equipo::find($request->get('equipo_local'));
+        $partido->ciudad = $equipo_local->ciudad;
+
         $partido->fecha = $request ->get('fecha');
+        $partido->hora = $request ->get('hora');
+
 
          $partido-> save(); 
         
