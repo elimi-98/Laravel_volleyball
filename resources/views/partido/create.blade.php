@@ -24,19 +24,14 @@
       </select>
   </div>
   <div class="mb-3">
-    <label for="ciudad" class="form-label">Ciudad</label>
-        <select name="ciudad" class="form-control">
-          <option value="" disabled selected>Selecciona una ciudad...</option>"
-          @foreach($equipos as $equipo)
-              <option value="{{$equipo->id}}">{{$equipo->ciudad}}</option>
-          @endforeach
-      </select>
+    <label for="fecha" class="form-label">Fecha</label>
+    <input id="fecha" name="fecha" type="date" class="form-control">
   </div>
   <div class="mb-3">
-    <label for="" class="form-label">Fecha</label>
-    <input id="fecha" name="timestamp" type="date" class="form-control" tabindex="3">
-  </div>
-  <a href="/partido" class="btn btn-secondary" tabindex="5">Cancelar</a>
-  <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+    <label for="hora" class="form-label">Hora</label>
+    <input id="hora" name="hora" type="time" class="form-control">
+</div>
+  <a href="/partido" class="btn btn-secondary" >Cancelar</a>
+  <button type="submit" class="btn btn-primary" >Guardar</button>
 </form>
 @endsection

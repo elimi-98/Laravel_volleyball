@@ -1,45 +1,65 @@
 @extends('layouts.plantillabase')
 
 @section('contenido')
-<h2 class="mb-4 text-center uppercase mt-5">Equipo</h2>
+<style>
+    /* Estilos personalizados */
+    .partido-info {
+        font-size: 35px; /* Tamaño de fuente más grande */
+        width: 100%; /* Ocupar casi todo el ancho horizontal */
+        margin: 0 auto; /* Centrar horizontalmente */
+    }
 
-<div class="container mt-5 text-center">
-    <a href="partido/create" class="btn btn-outline-primary">CREAR PARTIDO</a>
-</div>
+    .vs {
+        font-size: 50px; /* Tamaño de fuente más grande para "VS" */
+    }
+
+    .fecha {
+        font-size: 25px; /* Tamaño de fuente más grande para la fecha */
+    }
+
+    .btn-group {
+        margin-top: 10px; /* Espacio entre los botones */
+    }
+    
+    .custom-button {
+        margin: 15px 10px; /* Márgenes superior e inferior de 10px y laterales de 5px */
+        width: auto; /* Ancho automático para que se ajuste al contenido */
+    }
+    
+</style>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Partidos registrados</h2>
-    <table class="table table-bordered table-hover">
-        <thead class="table-primary">
-            <tr>
-                <th class="text-center">Equipo local</th>
-                <th class="text-center">Equipo visitante</th>
-                <th class="text-center">Ciudad</th>
-                <th class="text-center">Fecha</th>
-                <th class="text-center">Mostrar</th>
-                <th class="text-center">Editar</th>
-                <th class="text-center">Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h2 class="mb-4 text-center text-uppercase">Temporada 2024</h2>
+
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3 text-center">
+            <a href="partido/create" class="btn btn-outline-primary btn-block">Crear Partido</a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12" >
             @foreach ($partidos as $partido)
-                <tr>
-                    <td class="text-center">{{$partido->local->nombre}}</td>
-                    <td class="text-center">{{$partido->visitante->nombre}}</td>
-                    <td class="text-center">{{$partido->local->ciudad}}</td>
-                    <td class="text-center">{{$partido->fecha}}</td>
-                    <td class="text-center"><a href="/partido/{{$partido->id}}" class="btn btn-warning">
-                        <i class="material-icons">visibility</i>
-                    </a></td>
-                    <td class="text-center"><a href="/partido/{{$partido->id}}/edit" class="btn btn-primary">
-                        <i class="material-icons">edit</i>
-                    </a></td>
-                    <td class="text-center"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete{{$partido->id}}">
-                        <i class="material-icons">delete</i>
-                    </button></td>
-                </tr> 
-                
-                
+                <div class="text-center row mt-3 border rounded p-3 partido-row bg-slate-300 mx-auto my-auto" style="width: 60% "> </div>
+                    <div class="col-md-12 text-center">
+                        <div class="partido-info text-uppercase">
+                            {{ $partido->local->nombre }} <span class="vs">VS</span> {{ $partido->visitante->nombre }}
+                        </div>
+                        <div class="fecha">
+                            {{ $partido->fecha }}
+                            </div>
+                                <a href="/partido/{{$partido->id}}" class="btn btn-warning custom-button">
+                                    <i class="material-icons">visibility</i>
+                                </a>
+                                <a href="/partido/{{$partido->id}}/edit" class="btn btn-primary custom-button">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <button type="button" class="btn btn-danger custom-button" data-bs-toggle="modal" data-bs-target="#confirmDelete{{$partido->id}}">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            
+                        </div>
+                    </div>
                 <!-- Modal de confirmación de borrado -->
                 
                 <div class="modal fade" id="confirmDelete{{$partido->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +84,7 @@
                     </div>
                 </div>
             @endforeach
-        </tbody>
-    </table>
-</div>
+                <div class="text-center row mt-3 border rounded p-3 partido-row bg-slate-300 mx-auto my-auto" style="width: 50% "> </div>
+        </div>
+    </div>
 @endsection

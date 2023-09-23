@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             
             $table->id();
-            $table->string('nombre', 10);
-            $table->string('ciudad', 10); 
-            $table->integer('jugadores');
-            $table->integer('division'); 
+            $table->string('nombre', 20);
+            $table->string('ciudad', 20); 
+            $table->integer('jugadores',);
+            $table->integer('division',); 
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
 
