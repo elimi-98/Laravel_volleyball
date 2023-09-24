@@ -28,19 +28,20 @@
     
 </style>
 
-<div class="container mt-5">
+<div class="container mt-4">
     <h2 class="mb-4 text-center text-uppercase">Temporada 2024</h2>
-
-    <div class="row mt-4">
+    <a href=/equipo/ class="btn btn-primary">
+        <i class="material-icons">arrow_back</i>
+     </a>    
+     <div class="row mt-3">
         <div class="col-md-6 offset-md-3 text-center">
-            <a href="partido/create" class="btn btn-outline-primary btn-block">Crear Partido</a>
+            <a href="partido/create" class="btn btn-outline-primary btn-block">CREAR PARTIDO</a>
         </div>
     </div>
 
     <div class="row mt-5">
         <div class="col-md-12" >
             @foreach ($partidos as $partido)
-                <div class="text-center row mt-3 border rounded p-3 partido-row bg-slate-300 mx-auto my-auto" style="width: 60% "> </div>
                     <div class="col-md-12 text-center">
                         <div class="partido-info text-uppercase">
                             {{ $partido->local->nombre }} <span class="vs">VS</span> {{ $partido->visitante->nombre }}
@@ -57,7 +58,8 @@
                                 <button type="button" class="btn btn-danger custom-button" data-bs-toggle="modal" data-bs-target="#confirmDelete{{$partido->id}}">
                                     <i class="material-icons">delete</i>
                                 </button>
-                            
+                            <div class="text-center row mt-3 border rounded p-3 partido-row bg-slate-300 mx-auto my-auto" style="width: 60% "> </div>
+
                         </div>
                     </div>
                 <!-- Modal de confirmación de borrado -->
@@ -84,7 +86,6 @@
                     </div>
                 </div>
             @endforeach
-                <div class="text-center row mt-3 border rounded p-3 partido-row bg-slate-300 mx-auto my-auto" style="width: 50% "> </div>
         </div>
     </div>
 @endsection
