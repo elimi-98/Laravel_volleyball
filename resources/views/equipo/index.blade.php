@@ -1,8 +1,14 @@
 @extends('layouts.plantillabase')
 
 @section('contenido')
-<div class="container mt-5 text-center">
-    <a href="equipo/create" class="btn btn-outline-primary">CREAR EQUIPO</a>
+
+<div class="text-right">
+    @if (count($equipos) >= 2)
+        <a href="{{ route('partido.index') }}" class="btn btn-primary mt-4">Ver partidos</a>
+    @endif
+</div>
+<div class="container mt-8 text-center">
+    <a href="{{ route('equipo.create') }}" class="btn btn-outline-primary">CREAR EQUIPO</a>
 </div>
 
 <style>
@@ -14,50 +20,47 @@
         transition: background-color 0.3s ease;
         
     }
-    .equipo-card a {
-    text-decoration: none;
-    }
-    
-    .equipo-card:hover {
-        background-color: rgba(0, 0, 255, 0.4);
-    }
 
     .equipo-title {
-        font-size: 24px;
+        font-size: 40px;
         text-transform: uppercase;
-        font-weight: bold; /* Texto en negrita */
         color: black; /* Color de texto en negro */
     }
+
+    .custom-button {
+        margin: 15px px; /* Márgenes superior e inferior de 10px y laterales de 5px */
+        width: auto; /* Ancho automático para que se ajuste al contenido */
+    }
+    
 </style>
 
 <body>
     <div class="container mt-5">
+        @if ($equipos->isEmpty())
+            <p class="text-gray-800 text-center" style="font-size: 20px;">¡Vaya, aún no hay ningún equipo! Crea, al menos dos, para poder gestionar partidos.</p>
+        @endif
         <div class="row">
             @foreach ($equipos as $equipo)
             <div class="col-12 col-sm-6 col-md-4 mb-4">
-                <a href="{{ route('partido.index') }}">
                     <div class="card equipo-card">
                         <div class="card-body text-center">
                             <h5 class="text-gray-800 card-title equipo-title font-weight-bold text-uppercase">{{ $equipo->nombre }}</h5>
-                            <p class="text-gray-800">Ciudad: {{ $equipo->ciudad }}</p>
-                            <p class="text-gray-800">Número de Jugadores: {{ $equipo->jugadores }}</p>
-                            <p class="text-gray-800">División: {{ $equipo->division }}</p>
+                            <p class="text-gray-800" style="font-size: 20px;">{{ $equipo->ciudad }}</p>
 
                             <div class="mt-4">
-                                <a href="/equipo/{{$equipo->id}}" class="btn btn-warning">
+                                <a href="/equipo/{{$equipo->id}}" class="btn btn-warning custom-button">
                                     <i class="material-icons">visibility</i>
                                 </a>
-                                <a href="/equipo/{{$equipo->id}}/edit" class="btn btn-primary">
+                                <a href="/equipo/{{$equipo->id}}/edit" class="btn btn-primary custom-button">
                                     <i class="material-icons">edit</i>
                                 </a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger custom-button" data-bs-toggle="modal"
                                     data-bs-target="#confirmDelete{{$equipo->id}}">
                                     <i class="material-icons">delete</i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                </a>
             </div>
 
             <!-- Modal de confirmación de borrado -->
