@@ -31,6 +31,13 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'nombre'=> 'required|max:20',
+            'ciudad'=> 'required|max:20',
+            'jugadores'=> 'required|integer|max:20',
+            'division'=> 'required|integer|max:10',
+        ]); 
       
     // Verificar si el usuario está autenticado.
         if (Auth::check()) {
@@ -83,7 +90,15 @@ class EquipoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
+
+        $request->validate([
+            'nombre'=> 'required|max:20',
+            'ciudad'=> 'required|max:20',
+            'jugadores'=> 'required|integer|max:20',
+            'division'=> 'required|integer|max:10',
+        ]); 
+
         $equipo = Equipo::find($id); 
 
         $equipo->nombre = $request->get('nombre');
