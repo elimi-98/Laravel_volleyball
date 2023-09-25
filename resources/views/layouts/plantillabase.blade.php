@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -10,7 +11,9 @@
   
   <body class="bg-gray-100">
       <h1 class="bg-blue-500 text-white text-center px-4 py-2">VOLLEYBALL LEAGUE</h1>
-    <div class= "container">
+      <div class= "container">
+        
+
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         @yield('contenido') 
@@ -20,3 +23,4 @@
     
   </body>
 </html>
+</x-app-layout>
