@@ -16,19 +16,20 @@ use App\Http\Controllers\LigaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
-Route::resource('equipo','App\Http\Controllers\EquipoController');
-Route::resource('partido','App\Http\Controllers\PartidoController');
-
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/equipo', function () {
+        return view('equipo.index');
+    })->name('equipo');
+});
+
+Route::middleware('auth')->group(function(){
+    Route::resource('equipo','App\Http\Controllers\EquipoController');
+    Route::resource('partido','App\Http\Controllers\PartidoController');
 });

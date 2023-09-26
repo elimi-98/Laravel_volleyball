@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equipo; 
+use Illuminate\Support\Facades\Auth;
 
 class EquipoController extends Controller
 {
@@ -20,7 +21,8 @@ class EquipoController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
+        
         return view('equipo.create'); 
     }
 
@@ -29,18 +31,40 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
-        $equipos = new Equipo();
 
-        $equipos->nombre = $request->get('nombre');
-        $equipos->ciudad = $request->get('ciudad');
-        $equipos->jugadores = $request->get('jugadores');
-        $equipos->division = $request->get('division');
+        $request->validate([
+            'nombre'=> 'required|max:20',
+            'ciudad'=> 'required|max:20',
+            'jugadores'=> 'required|integer|min:5|max:20',
+            'division'=> 'required|integer|min:1|max:10',
+        ]); 
+      
+    
+        if (Auth::check()) {
+            
+            $user = Auth::user(); 
 
-        $equipos->save(); 
+            
+            $equipo = new Equipo();
+            $equipo->nombre = $request->input('nombre');
+            $equipo->ciudad = $request->input('ciudad');
+            $equipo->jugadores = $request->input('jugadores');
+            $equipo->division = $request->input('division');
 
-        return redirect('/equipo');
+            
+            $equipo->user_id = $user->id;
 
+            
+            $equipo->save();
+
+            
+            return redirect('/equipo')->with('success', 'Equipo creado exitosamente');
+            } else {
+            
+            return redirect('/login')->with('error', 'Debes iniciar sesión para crear un equipo');
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -49,7 +73,7 @@ class EquipoController extends Controller
     {
         $equipo = Equipo::find($id); 
         return view('equipo.show', compact('equipo'));
-        //return view('equipos.show', ['equipo' => $equipo]);//
+        
 
     }
 
@@ -66,7 +90,15 @@ class EquipoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
+
+        $request->validate([
+            'nombre'=> 'required|max:20',
+            'ciudad'=> 'required|max:20',
+            'jugadores'=> 'required|integer|max:20',
+            'division'=> 'required|integer|max:10',
+        ]); 
+
         $equipo = Equipo::find($id); 
 
         $equipo->nombre = $request->get('nombre');

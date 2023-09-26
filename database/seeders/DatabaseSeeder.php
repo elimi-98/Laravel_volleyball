@@ -15,20 +15,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\User::factory(10)->create();
-
-         \App\Models\User::factory()->create([
+         $usuario1= User::factory()->create([
            'name' => 'Eli',
            'email' => 'test@example.com',
            'password' => Hash::make(12345678),
          ]);
 
-         User::factory(10)->create()->each(function ($usuario) {
-          $usuario->equipos()->save(Equipo::factory()->make());
-      });
-  
+         User::factory(10)->create();
+      
+         $equipos = [];
 
-         \App\Models\Equipo::factory(5)->create();
+        $nombresEquipos = ['WWOMAN', 'VICTORY', 'LOLAS', 'WEBER', 'PHANTERS', 'BEACHVOLLEY', 'YMCA'];
+        $ciudadesEquipos = ['Barcelona', 'Paris', 'Cali', 'Sao Paulo', 'Liverpool', 'Florencia', 'Bogotá'];
+
+        for ($i = 0; $i < 10; $i++) {
+            $equipos[] = [
+                'nombre' => $nombresEquipos[$i],
+                'ciudad' => $ciudadesEquipos[$i],
+                'jugadores' => 10,
+                'division' => 1,
+                'user_id' => $usuario1->id,
+            ];
+        }
+
+        Equipo::insert($equipos);
 
     }
 }

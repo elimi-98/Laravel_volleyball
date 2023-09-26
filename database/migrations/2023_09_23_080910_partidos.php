@@ -13,10 +13,16 @@ return new class extends Migration
     {
         Schema::create('partidos', function (Blueprint $table) {
             $table->id();
-            $table->string('equipo1', 10);
-            $table->string('equipo2', 10);
-            $table->time('fecha');
+            $table->unsignedBigInteger('equipo_local');
+            $table->unsignedBigInteger('equipo_visitante');
+            $table->string('ciudad', 20);
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
+        
+            $table->foreign('equipo_local')->references('id')->on('equipos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('equipo_visitante')->references('id')->on('equipos')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
