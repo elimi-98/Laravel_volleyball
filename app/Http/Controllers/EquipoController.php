@@ -35,8 +35,8 @@ class EquipoController extends Controller
         $request->validate([
             'nombre'=> 'required|max:20',
             'ciudad'=> 'required|max:20',
-            'jugadores'=> 'required|integer|max:20',
-            'division'=> 'required|integer|max:10',
+            'jugadores'=> 'required|integer|min:5|max:20',
+            'division'=> 'required|integer|min:1|max:10',
         ]); 
       
     // Verificar si el usuario está autenticado.

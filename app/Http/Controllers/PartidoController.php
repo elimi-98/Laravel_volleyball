@@ -32,7 +32,12 @@ class PartidoController extends Controller
     public function store(Request $request)
 {
         // Validación de los datos del formulario aquí...
-
+        $request->validate([
+            'equipo_local' => 'required',
+            'equipo_visitante' => 'required|different:equipo_local',
+            'fecha' => 'required',
+            'hora' => 'required',
+        ]);
         // Crear una nueva instancia de Partido
         $partido = new Partido();
     
@@ -87,7 +92,15 @@ class PartidoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
+
+        $request->validate([
+            'equipo_local'=> 'required',
+            'equipo_visitante'=> 'required|different:equipo_local',
+            'fecha' => 'required',
+            'hora'=> 'required',
+        ]); 
+
         $partido = Partido::find($id);
        
         $partido->equipo_local = $request ->get('equipo_local');
