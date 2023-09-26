@@ -31,37 +31,32 @@ class PartidoController extends Controller
      */
     public function store(Request $request)
 {
-        // Validación de los datos del formulario aquí...
         $request->validate([
             'equipo_local' => 'required',
             'equipo_visitante' => 'required|different:equipo_local',
             'fecha' => 'required',
             'hora' => 'required',
         ]);
-        // Crear una nueva instancia de Partido
+        
         $partido = new Partido();
     
-        // Obtener el ID del equipo local desde la solicitud
+        
         $equipoLocalId = $request->input('equipo_local');
         
-        // Usar la relación para obtener el equipo local y su ciudad
+        
         $equipoLocal = Equipo::find($equipoLocalId);
         $ciudad = $equipoLocal->ciudad;
         
-        // Asignar los valores al partido
+        
         $partido->equipo_local = $equipoLocalId;
         $partido->equipo_visitante = $request->input('equipo_visitante');
         $partido->ciudad = $ciudad; // Asignar la ciudad obtenida
         $partido->fecha = $request->input('fecha');
         $partido->hora = $request->input('hora');
 
-        
-        // Otras asignaciones de campos si es necesario...
-        
-        // Guardar el partido
+    
         $partido->save();
 
-        // Redireccionar a la página de partidos
         return redirect('/partido'); 
 }
 
