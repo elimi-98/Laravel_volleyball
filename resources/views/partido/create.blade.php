@@ -13,6 +13,11 @@
                 <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
             @endforeach
         </select>
+        @error('equipo_local')
+    <br>
+      <small>*{{$message}}</small>
+    <br>
+    @enderror
   </div>
   <div class="mb-3">
     <label for="equipo_visitante" class="form-label">Equipo visitante</label>
@@ -22,14 +27,30 @@
               <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
           @endforeach
       </select>
+      @error('equipo_visitante')
+    <br>
+      <small>*{{$message}}</small>
+    <br>
+    @enderror
   </div>
   <div class="mb-3">
     <label for="fecha" class="form-label">Fecha</label>
     <input id="fecha" name="fecha" type="date" class="form-control">
+    @error('fecha')
+    <br>
+      <small>*{{$message}}</small>
+    <br>
+    @enderror
   </div>
+  
   <div class="mb-3">
     <label for="hora" class="form-label">Hora</label>
     <input id="hora" name="hora" type="time" class="form-control">
+    @error('hora')
+    <br>
+      <small>*{{$message}}</small>
+    <br>
+    @enderror
 </div>
   <a href="/partido" class="btn btn-secondary" >Cancelar</a>
   <button type="submit" class="btn btn-primary" >Guardar</button>
