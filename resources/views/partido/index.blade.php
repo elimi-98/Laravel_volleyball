@@ -41,6 +41,9 @@
 
     <div class="row mt-5">
         <div class="col-md-12" >
+            @if ($partidos->isEmpty())
+            <p class="text-gray-800 text-center" style="font-size: 20px;">¡Vaya, aún no hay ningún partido registrado!</p>
+            @endif
             @foreach ($partidos as $partido)
                     <div class="col-md-12 text-center">
                         <div class="partido-info text-uppercase">
