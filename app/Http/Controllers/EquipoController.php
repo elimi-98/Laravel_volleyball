@@ -39,28 +39,28 @@ class EquipoController extends Controller
             'division'=> 'required|integer|min:1|max:10',
         ]); 
       
-    // Verificar si el usuario está autenticado.
+    
         if (Auth::check()) {
-            // Obtener el usuario autenticado actualmente.
-            $user = Auth::user(); // Utilizar Auth::user() para obtener el usuario autenticado.
+            
+            $user = Auth::user(); 
 
-            // Crear un nuevo equipo y asignar valores.
+            
             $equipo = new Equipo();
             $equipo->nombre = $request->input('nombre');
             $equipo->ciudad = $request->input('ciudad');
             $equipo->jugadores = $request->input('jugadores');
             $equipo->division = $request->input('division');
 
-            // Asignar el ID del usuario al campo user_id.
+            
             $equipo->user_id = $user->id;
 
-            // Guardar el equipo.
+            
             $equipo->save();
 
-            // Redireccionar o mostrar un mensaje de éxito.
+            
             return redirect('/equipo')->with('success', 'Equipo creado exitosamente');
-        } else {
-            // Manejar el caso en el que el usuario no esté autenticado.
+            } else {
+            
             return redirect('/login')->with('error', 'Debes iniciar sesión para crear un equipo');
         }
     }
@@ -73,7 +73,7 @@ class EquipoController extends Controller
     {
         $equipo = Equipo::find($id); 
         return view('equipo.show', compact('equipo'));
-        //return view('equipos.show', ['equipo' => $equipo]);//
+        
 
     }
 

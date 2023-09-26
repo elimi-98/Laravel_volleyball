@@ -4,26 +4,26 @@
 <style>
     /* Estilos personalizados */
     .partido-info {
-        font-size: 35px; /* Tamaño de fuente más grande */
-        width: 100%; /* Ocupar casi todo el ancho horizontal */
-        margin: 0 auto; /* Centrar horizontalmente */
+        font-size: 35px; 
+        width: 100%;
+        margin: 0 auto; 
     }
 
     .vs {
-        font-size: 50px; /* Tamaño de fuente más grande para "VS" */
+        font-size: 50px; 
     }
 
     .fecha {
-        font-size: 25px; /* Tamaño de fuente más grande para la fecha */
+        font-size: 25px;
     }
 
     .btn-group {
-        margin-top: 10px; /* Espacio entre los botones */
+        margin-top: 10px;
     }
     
     .custom-button {
-        margin: 15px 10px; /* Márgenes superior e inferior de 10px y laterales de 5px */
-        width: auto; /* Ancho automático para que se ajuste al contenido */
+        margin: 15px 10px; 
+        width: auto; 
     }
     
 </style>
@@ -41,6 +41,9 @@
 
     <div class="row mt-5">
         <div class="col-md-12" >
+            @if ($partidos->isEmpty())
+            <p class="text-gray-800 text-center" style="font-size: 20px;">¡Vaya, aún no hay ningún partido registrado!</p>
+            @endif
             @foreach ($partidos as $partido)
                     <div class="col-md-12 text-center">
                         <div class="partido-info text-uppercase">

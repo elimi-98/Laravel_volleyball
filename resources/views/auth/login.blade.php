@@ -12,12 +12,16 @@
 </div>
 @endif
 <x-guest-layout>
+    
     <x-authentication-card>
-        <x-slot name="logo">
+        <div class="bg-white py-9 text-center">
+        <h1 class="text-5xl font-bold mb-2">¡CREA TU LIGA DE VÓLEY!</h1>
+    </div>
+        <x-slot name="logo" class="mt-4">
             <x-authentication-card-logo />
         </x-slot>
 
-        <x-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-8" />
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">

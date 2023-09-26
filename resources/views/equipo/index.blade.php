@@ -24,12 +24,12 @@
     .equipo-title {
         font-size: 40px;
         text-transform: uppercase;
-        color: black; /* Color de texto en negro */
+        color: black; 
     }
 
     .custom-button {
-        margin: 15px px; /* Márgenes superior e inferior de 10px y laterales de 5px */
-        width: auto; /* Ancho automático para que se ajuste al contenido */
+        margin: 15px px; 
+        width: auto; 
     }
     
 </style>
